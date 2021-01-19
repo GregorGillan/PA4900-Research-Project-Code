@@ -5,7 +5,7 @@
     <ProjectGuid>8bac2633-e475-4ba0-8d61-1f185d2bb47e</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>WIP.py</StartupFile>
+    <StartupFile>Simple_ODE_Solver.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,6 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Simple_ODE_Solver.py" />
     <Compile Include="WIP.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
