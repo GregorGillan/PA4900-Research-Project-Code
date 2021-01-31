@@ -7,21 +7,20 @@ from pylab import *
 
 #Defining Initial conditions
 #----------------------------------------------------#
-#Total population
-n = 1000
+n = 1000 #Total population
 
-#Initial number of infected and recovered people, 'I0' and 'R0'
-I0, R0 = 50, 0
+I0 = 1 #Initial number of infected people
+R0 = 0 #Initial number of recovered people
 
 #Everyone else 'S0', ie susceptable to infection initially
 S0 = n - I0 - R0
 
-#Infectrion rate 'i' and mean recovery rate 'r' (1/days)
-i, r = 0.001, 1/7 #infection rate
+i = 0.2 #Infection rate
+r = 1/10 #Recovery rate (1/days)
 #----------------------------------------------------#
 
 #Defining a time range
-t = np.linspace(0, 20)
+t = np.linspace(0, 160, 160)
 
 #Defining the SIR model equations
 def modelSIR(y, t, n, i, r):
@@ -32,10 +31,10 @@ def modelSIR(y, t, n, i, r):
     return dSdt, dIdt, dRdt
 
 #Initial conditions vector
-y0 = S0, I0, R0
+iCV = S0, I0, R0
 
 #integrating SIR equations over time grid
-soln = odeint(modelSIR, y0, t, args = (n, i, r))
+soln = odeint(modelSIR, iCV, t, args = (n, i, r))
 
 S, I, R = soln.T
 

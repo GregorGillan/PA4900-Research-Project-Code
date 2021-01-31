@@ -5,7 +5,7 @@
     <ProjectGuid>8bac2633-e475-4ba0-8d61-1f185d2bb47e</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>WIP.py</StartupFile>
+    <StartupFile>SIR Model Working.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>

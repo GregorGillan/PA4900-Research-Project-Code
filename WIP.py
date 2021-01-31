@@ -21,7 +21,7 @@ i, r = 0.001, 1/7 #infection rate
 #----------------------------------------------------#
 
 #Defining a time range
-t = np.linspace(0, 20)
+t = np.linspace(0, 160, 160)
 
 #Defining the SIR model equations
 def modelSIR(y, t, n, i, r):
