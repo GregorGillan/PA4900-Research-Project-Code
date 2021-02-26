@@ -49,7 +49,4 @@ ax1.set_ylabel('Predator Population')
 #ax.grid(b=True, which='major', c='w', lw=2, ls='-')
 legend = ax.legend()
 legend.get_frame().set_alpha(0.5)
-#for spine in ('top', 'right', 'bottom', 'left'):
-   # ax.spines[spine].set_visible(False)
-plt.savefig('my_fig.png', dpi = 96)
 plt.show()

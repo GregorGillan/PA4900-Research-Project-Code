@@ -22,12 +22,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="SIR Lockdown Modelling.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Predator-Prey Model WIP.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Simple_ODE_Solver.py" />
     <Compile Include="SIR Model Working.py">
       <SubType>Code</SubType>
