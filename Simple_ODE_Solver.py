@@ -2,6 +2,7 @@ import numpy as np
 from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 from pylab import *
+import pandas as pd
 
 #defining functions
 def modelRecovery(I, t):
