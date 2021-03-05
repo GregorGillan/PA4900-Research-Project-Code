@@ -7,8 +7,7 @@ from pylab import *
 #----------------------------------------------------#
 n = 68E6 #Total population GM = 1000
 
-I0 = 1 #GM = 1
-#Initial number of infected people
+I0 = 1 #GM = 1 Initial number of infected people
 R0 = 0 #Initial number of recovered people GM = 0
 
 #Everyone else 'S0', ie susceptable to infection initially
@@ -20,20 +19,17 @@ r = 1/10 #Recovery rate (1/days) GM = 1/10
 
 oDays = 365 #All time 
 t0 = np.linspace(0, oDays, oDays)
-lStart = 160 #Lockdown start day
+t_s = 160 #Lockdown start day
 lLength = 20 #Lockdown end day
 
-def timespace (oDays, lStart, lLength):
+def timespace (oDays, t_s, lLength):
     tVT = np.linspace(0, lStart, lStart + 1)
     lckDwn = np.linspace(lStart, lStart + lLength + 1 , lLength + 2)
     aLckDwn = np.linspace(lStart + lLength + 1, oDays, oDays - (lStart + lLength))
     return tVT, lckDwn, aLckDwn
-    #print(tVT)
-    #print(lckDwn)
-    #print(aLckDwn)
+
 t1, t2, t3 = timespace(oDays, lStart, lLength)
 
-#print(t1, t2, t3)
 
 def modelSIR(y, t, n, i, r):
     S, I, R = y
@@ -43,24 +39,35 @@ def modelSIR(y, t, n, i, r):
     return dSdt, dIdt, dRdt
 
 
+def lkDnModel(t_s, t_d):
+    #timespace for lockdowns
+    #----------------------------------------------------#
+    t1 = np.linspace(0, t_s, t_s + 1) #Up to lockdown time
+    t2 = np.linspace(t_s, t_s + t_d + 1 , t_d + 2) #Lockdown time
+    t3 = np.linspace(t_s + t_d + 1, oDays, oDays - (t_s + t_d)) #After lockdown time
+    #----------------------------------------------------#
+    
+    iCV1 = S0, I0, R0
+
+    solnU = soln1 = odeint(modelSIR, iCV1, t0, args = (n, i, r))
+    SU, IU, RU = solnU.T
+
+    #integrating SIR equations over time grid
+    soln1 = odeint(modelSIR, iCV1, t1, args = (n, i, r))
+    S1, I1, R1 = soln1.T
+
+    iCV2 = S1[-1], I1[-1], R1[-1]
+    iL = 0.5*i #Transmission rate in lockdown
+    soln2 = odeint(modelSIR, iCV2, t2, args = (n, iL, r))
+    S2, I2, R2 = soln2.T
+
+    iCV3 = S2[-1], I2[-1], R2[-1]
+    soln3 = odeint(modelSIR, iCV3, t3, args = (n, i, r))
+    S3, I3, R3 = soln3.T
+
+
 #Initial conditions vector
-iCV1 = S0, I0, R0
 
-solnU = soln1 = odeint(modelSIR, iCV1, t0, args = (n, i, r))
-SU, IU, RU = solnU.T
-
-#integrating SIR equations over time grid
-soln1 = odeint(modelSIR, iCV1, t1, args = (n, i, r))
-S1, I1, R1 = soln1.T
-
-iCV2 = S1[-1], I1[-1], R1[-1]
-iL = 0.5*i #Transmission rate in lockdown
-soln2 = odeint(modelSIR, iCV2, t2, args = (n, iL, r))
-S2, I2, R2 = soln2.T
-
-iCV3 = S2[-1], I2[-1], R2[-1]
-soln3 = odeint(modelSIR, iCV3, t3, args = (n, i, r))
-S3, I3, R3 = soln3.T
 
 
 

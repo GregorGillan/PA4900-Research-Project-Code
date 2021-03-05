@@ -5,7 +5,7 @@
     <ProjectGuid>8bac2633-e475-4ba0-8d61-1f185d2bb47e</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>UK SIR Model.py</StartupFile>
+    <StartupFile>The Log Map Multiple.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,6 +23,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="dataRet.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="The Log Map Multiple.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="The Logistics Map.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="UK SIR Model.py">
