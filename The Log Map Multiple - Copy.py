@@ -9,9 +9,9 @@ x0 = 0.5 #Initial population
 b0 = 2.8
 bMax = 4
 print(b0)
-sTP = 0.05
+sTP = 0.001
 
-iN = 100 #Number of iterations
+iN = 1000 #Number of iterations
 iLL = []
 itAFT = []
 def lMap(b):
@@ -27,8 +27,8 @@ xxxx = [lMap(b0)]
 iB = b0
 iBC = [b0]
 while iB < bMax:
-    iB = iB + 0.05
-    iB = np.round(iB, decimals = 2)
+    iB = iB + sTP
+    iB = np.round(iB, decimals = 4) ##CHange with STp d.p.!!!
     xxxx.append(lMap(iB))
     iBC.append(iB)
 
@@ -44,19 +44,18 @@ print(xxxx)
 #print(b_L)
 #print(iL)
 #print(itAFT)
-#print(size(itAFT))
-xx = xyx
+xx = iBC
 yy = xxxx
 
-plt.scatter(xx, yy, s = 0.5)
-plt.show()
-"""
+#plt.scatter(xx, yy, s = 0.5)
+#plt.show()
+
 fig = plt.figure(facecolor='w')
 ax = fig.add_subplot(111, axisbelow=True)
-ax.plot.scatter(xx, yy)
+ax.plot(xx, yy)
 ax.set_xlabel('Iteration')
 ax.set_ylabel('Population of x (0 - 1)')
-"""
+
 """
 lab = [
     "x_0: {}, ".format(x_0), 
@@ -66,10 +65,9 @@ lab = [
     
 lab = ''.join(lab)
 ax.annotate(lab, xy=(0, 1), xycoords='axes fraction')
-
+"""
 for spine in ('top', 'right', 'bottom', 'left'):
     ax.spines[spine].set_visible(False)
 #ax.grid(b=True, which='minor', c='black', lw=0.5, ls='-')
 #ax.grid(b=True, which='major', c='black', lw=0.5, ls='-')
 plt.show()
-"""
