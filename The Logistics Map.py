@@ -5,7 +5,7 @@ from pylab import *
 import pandas as pd
 
 x_0 = 0.5 #Initial population
-b = 3.95 #fecundity rate
+b = 3.75 #fecundity rate
 
 iN = 100 #Number of iterations
 i = 0 #Initialising iterations
@@ -20,14 +20,14 @@ while i < iN:
 
     iL.append(x) #Creating iteration array
 
-print(iL)
-print(len(iL))
+print(iL[-1])
+#print(len(iL))
 
 yy = iL
 xx = np.linspace(0, iN, iN + 1)
-print(yy)
-print(xx)
-
+#print(yy)
+#print(xx)
+"""
 fig = plt.figure(facecolor='w')
 ax = fig.add_subplot(111, axisbelow=True)
 ax.plot(xx, yy, 'b', alpha=0.5, lw=2, label='Susceptible')
@@ -50,3 +50,4 @@ for spine in ('top', 'right', 'bottom', 'left'):
 #ax.grid(b=True, which='minor', c='black', lw=0.5, ls='-')
 #ax.grid(b=True, which='major', c='black', lw=0.5, ls='-')
 plt.show()
+"""

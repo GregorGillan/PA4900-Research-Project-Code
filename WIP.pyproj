@@ -5,7 +5,7 @@
     <ProjectGuid>8bac2633-e475-4ba0-8d61-1f185d2bb47e</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>The Log Map Multiple.py</StartupFile>
+    <StartupFile>The Log Map Multiple - Copy.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,6 +25,7 @@
     <Compile Include="dataRet.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="The Log Map Multiple - Copy.py" />
     <Compile Include="The Log Map Multiple.py">
       <SubType>Code</SubType>
     </Compile>
