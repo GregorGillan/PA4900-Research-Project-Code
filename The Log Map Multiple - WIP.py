@@ -10,36 +10,55 @@ b0 = 2.8 #Fecundity rate initial value.
 bMax = 4.0 #Fecundity rate final value.
 bStep = 0.001 #Change the value of dPoints to match the d.p of bStep.
 dPoints = 3 #Sets rounding accuracy, needs to match d,p of bstep, otherwise F.P rounding errors occur.
-iN = 1000 #Number of iterations.
+iN = 200 #Number of iterations.
 
 itPopVal = [] #Initializing array for the iterative population values for ach value of b.
 #function for completing the iterations of the function.
 def lMap(b):
+    pExVal.clear()
     p = p0 #Initialising the population value back to p0 before doing iterations.
     i = 0 #Initialising iterations.
     while i < iN:
         i = i + 1
         p = b * p * (1 - p)
         itPopVal.append(p)
+        if i > 100:
+            pExVal.append(p)
     return(p)
 
+pExVal = []
 pValues = [lMap(b0)] #Initializing the final population values.
 
 b = b0 #Initialising b values.
 bValues = [b0] #Initializing array for list of b values used.
 #Loop used to calculate p final for values of b.
+df = pd.DataFrame() #Creating dataframe for p value for iterations of b.
+df[len(df.columns)] = pExVal
 while b < bMax:
+    pExVal = []
     b = b + bStep
     b = np.round(b, decimals = dPoints) #Change with bStep d.p.!
     pValues.append(lMap(b))
     bValues.append(b)
+    df[len(df.columns)] = pExVal
 
 print(bValues)
 print(pValues)
+print(len(pExVal))
+print(df.ndim)
+print(df)
+print(df[:1])
 xValues = bValues
-yValues= pValues
+yValues = pValues
 
 #Doing scatter plots
+print(type(bValues))
+xxx = df
+#xxx = df.iloc[1].T
+#xxx = df.T
+#xxx = xxx.values.tolist()   
+#print(type(xxx))
+#print(xxx)
 plt.scatter(xValues, yValues, s = 0.5)
 
 #Plotting
@@ -49,6 +68,17 @@ ax.plot(xValues, yValues, 'b', alpha=0.5, lw=2, label='Susceptible')
 ax.set_xlabel('b Values')
 ax.set_ylabel('Population of x (0 - 1) after n iterations')
 
+#Plotting scatter
+#fig1 = plt.figure(facecolor='w')
+#ax1 = fig1.add_subplot(111, axisbelow=True)
+
+iii = 0
+while iii < (iN - 100):
+    xxx = df.iloc[iii].T
+    xxx = xxx.values.tolist()
+    print(xxx)
+    ax.scatter(xValues, xxx, c = 'b', s = 0.5)
+    iii = iii + 1
 
 lab = [
     "p0: {}, ".format(p0), 
