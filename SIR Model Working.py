@@ -1,7 +1,6 @@
 import numpy as np
 from scipy.integrate import odeint
 import matplotlib.pyplot as plt
-from pylab import *
 
 #Defining Initial conditions
 #----------------------------------------------------#
@@ -43,7 +42,7 @@ with open('listfile2.txt', 'w') as filehandle:
         filehandle.write('%s\n' % listitem)
 
 #defining Recovery function
-
+'''
 lab = [
     "Population: {}, ".format(n), 
     "S_0: {}, ".format(S0),
@@ -52,23 +51,34 @@ lab = [
     "Infection Rate: {}, ".format(i),
     "Recovery Rate: {} ".format(r)
     ]
-    
-lab = ''.join(lab)
 
-fig = plt.figure(facecolor='w')
+lab = ''.join(lab)
+'''
+
+fig = plt.figure(facecolor='k', figsize = (1280/96, 720/96), dpi = 96)
+fig.patch.set_alpha(0.0)
+#fig.figure(figsize = (1280/96, 720/96), dpi = 96)
 ax = fig.add_subplot(111, axisbelow=True)
-ax.plot(t, S/n, 'b', alpha=0.5, lw=2, label='Susceptible')
-ax.plot(t, I/n, 'r', alpha=0.5, lw=2, label='Infected')
-ax.plot(t, R/n, 'g', alpha=0.5, lw=2, label='Recovered')
-ax.set_xlabel('Time (days)')
-ax.set_ylabel('Proportion of Population')
+ax.patch.set_alpha(0.0)
+ax.plot(t, S/n, 'r', alpha=1, lw=2, label='Susceptible')
+ax.plot(t, I/n, 'g', alpha=1, lw=2, label='Infected')
+ax.plot(t, R/n, 'b', alpha=1, lw=2, label='Recovered')
+ax.set_title('Simple SIR Solution', c = 'black', fontsize = 20)
+ax.set_xlabel('Time (days)', c = 'black', fontsize = 18)
+ax.set_ylabel('Proportion of Population', c = 'black', fontsize = 18)
 ax.set_ylim(0,1.1)
 ax.yaxis.set_tick_params(length=0)
 ax.xaxis.set_tick_params(length=0)
-ax.grid(b=True, which='major', c='w', lw=2, ls='-')
-legend1 = ax.legend()
-ax.annotate(lab, xy=(0, 1), xycoords='axes fraction')
+ax.spines['bottom'].set_color('black')
+ax.spines['top'].set_color('black') 
+ax.spines['right'].set_color('black')
+ax.spines['left'].set_color('black')
+ax.tick_params(axis='x', colors='black', labelsize = 18)
+ax.tick_params(axis='y', colors='black', labelsize = 18)
+#ax.grid(b=True, which='major', c='black', lw=2, ls='-')
+legend1 = ax.legend(labelcolor = 'black', facecolor = 'k', framealpha = 0, frameon = False, fontsize = 18)
+#ax.annotate(lab, xy=(0, 1), xycoords='axes fraction', c = 'black')
 legend1.get_frame().set_alpha(0.5)
-for spine in ('top', 'right', 'bottom', 'left'):
-    ax.spines[spine].set_visible(False)
+#for spine in ('top', 'right', 'bottom', 'left'):
+ #   ax.spines[spine].set_visible(False)
 plt.show()

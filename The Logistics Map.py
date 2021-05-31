@@ -27,7 +27,7 @@ yy = iL
 xx = np.linspace(0, iN, iN + 1)
 #print(yy)
 #print(xx)
-"""
+
 fig = plt.figure(facecolor='w')
 ax = fig.add_subplot(111, axisbelow=True)
 ax.plot(xx, yy, 'b', alpha=0.5, lw=2, label='Susceptible')
@@ -50,4 +50,3 @@ for spine in ('top', 'right', 'bottom', 'left'):
 #ax.grid(b=True, which='minor', c='black', lw=0.5, ls='-')
 #ax.grid(b=True, which='major', c='black', lw=0.5, ls='-')
 plt.show()
-"""

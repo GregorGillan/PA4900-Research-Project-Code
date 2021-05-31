@@ -8,7 +8,7 @@ import pandas as pd
 p0 = 0.5 #Initial population.
 b0 = 2.8 #Fecundity rate initial value.
 bMax = 4.0 #Fecundity rate final value.
-bStep = 0.001 #Change the value of dPoints to match the d.p of bStep.
+bStep = 0.01 #Change the value of dPoints to match the d.p of bStep.
 dPoints = 3 #Sets rounding accuracy, needs to match d,p of bstep, otherwise F.P rounding errors occur.
 iN = 1000 #Number of iterations.
 
@@ -40,16 +40,28 @@ xValues = bValues
 yValues= pValues
 
 #Doing scatter plots
-plt.scatter(xValues, yValues, s = 0.5)
+plt.scatter(xValues, yValues, s = 0.1)
 
 #Plotting
-fig = plt.figure(facecolor='w')
+fig = plt.scatter(xValues, yValues, facecolor='w')
 ax = fig.add_subplot(111, axisbelow=True)
 ax.plot(xValues, yValues, 'b', alpha=0.5, lw=2, label='Susceptible')
 ax.set_xlabel('b Values')
 ax.set_ylabel('Population of x (0 - 1) after n iterations')
 
 
+
+
+
+for spine in ('top', 'right', 'bottom', 'left'):
+    ax.spines[spine].set_visible(False)
+#ax.grid(b=True, which='minor', c='black', lw=0.5, ls='-')
+#ax.grid(b=True, which='major', c='black', lw=0.5, ls='-')
+
+
+plt.show()
+
+'''
 lab = [
     "p0: {}, ".format(p0), 
     "b0: {}, ".format(b0),
@@ -60,12 +72,4 @@ lab = [
     
 lab = ''.join(lab)
 ax.annotate(lab, xy=(0, 1), xycoords='axes fraction')
-
-
-for spine in ('top', 'right', 'bottom', 'left'):
-    ax.spines[spine].set_visible(False)
-#ax.grid(b=True, which='minor', c='black', lw=0.5, ls='-')
-#ax.grid(b=True, which='major', c='black', lw=0.5, ls='-')
-
-
-plt.show()
+'''

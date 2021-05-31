@@ -5,7 +5,7 @@
     <ProjectGuid>8bac2633-e475-4ba0-8d61-1f185d2bb47e</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>The Log Map Multiple - WIP.py</StartupFile>
+    <StartupFile>Predator-Prey Model WIP - Copy.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,6 +25,9 @@
     <Compile Include="dataRet.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Predator-Prey Model WIP - Copy.py" />
+    <Compile Include="Predator-Prey Model.py" />
+    <Compile Include="SIR Lockdown Modelling - Copy.py" />
     <Compile Include="The Log Map Multiple - WIP.py" />
     <Compile Include="The Log Map Multiple.py">
       <SubType>Code</SubType>

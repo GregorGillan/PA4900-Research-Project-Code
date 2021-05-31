@@ -6,7 +6,7 @@ import pandas as pd
 
 #Initializing values
 p0 = 0.5 #Initial population.
-b0 = 2.8 #Fecundity rate initial value.
+b0 = 0 #Fecundity rate initial value.
 bMax = 4.0 #Fecundity rate final value.
 bStep = 0.001 #Change the value of dPoints to match the d.p of bStep.
 dPoints = 3 #Sets rounding accuracy, needs to match d,p of bstep, otherwise F.P rounding errors occur.
@@ -41,15 +41,17 @@ while b < bMax:
     pValues.append(lMap(b))
     bValues.append(b)
     df[len(df.columns)] = pExVal
-
+'''
 print(bValues)
 print(pValues)
 print(len(pExVal))
 print(df.ndim)
 print(df)
 print(df[:1])
+'''
 xValues = bValues
 yValues = pValues
+
 
 #Doing scatter plots
 print(type(bValues))
@@ -59,27 +61,43 @@ xxx = df
 #xxx = xxx.values.tolist()   
 #print(type(xxx))
 #print(xxx)
-plt.scatter(xValues, yValues, s = 0.5)
+#plt.scatter(xValues, yValues, s = 0.5)
 
 #Plotting
-fig = plt.figure(facecolor='w')
+fig = plt.figure(facecolor='black', figsize = (1280/96, 720/96), dpi = 96)
+fig.patch.set_alpha(0.0)
 ax = fig.add_subplot(111, axisbelow=True)
-ax.plot(xValues, yValues, 'b', alpha=0.5, lw=2, label='Susceptible')
-ax.set_xlabel('b Values')
-ax.set_ylabel('Population of x (0 - 1) after n iterations')
+ax.patch.set_alpha(0.0)
+#ax.scatter(xValues, yValues, s = 0.1, c = 'deeppink', label='Susceptible')
+ax.set_title('The Logistic Map - Bifurcation Diagram', c = 'black', fontsize = 20)
+ax.set_xlabel('b Values', c = 'black', fontsize = 18)
+ax.set_ylabel('Population of x (0 - 1)', c = 'black', fontsize = 18)
+ax.tick_params(axis='x', colors='black', labelsize = 18)
+ax.tick_params(axis='y', colors='black', labelsize = 18)
 
 #Plotting scatter
-#fig1 = plt.figure(facecolor='w')
+#fig1 = plt.figure(facecolor='black')
 #ax1 = fig1.add_subplot(111, axisbelow=True)
 
+
 iii = 0
+
 while iii < (iN - 100):
     xxx = df.iloc[iii].T
     xxx = xxx.values.tolist()
     print(xxx)
-    ax.scatter(xValues, xxx, c = 'b', s = 0.5)
+    ax.scatter(xValues, xxx, c = 'b', s = 0.001)
     iii = iii + 1
 
+
+for spine in ('top', 'right', 'bottom', 'left'):
+    ax.spines[spine].set_visible(False)
+#ax.grid(b=True, which='minor', c='black', lw=0.5, ls='-')
+#ax.grid(b=True, which='major', c='black', lw=0.5, ls='-')
+
+plt.show()
+
+'''
 lab = [
     "p0: {}, ".format(p0), 
     "b0: {}, ".format(b0),
@@ -90,12 +108,4 @@ lab = [
     
 lab = ''.join(lab)
 ax.annotate(lab, xy=(0, 1), xycoords='axes fraction')
-
-
-for spine in ('top', 'right', 'bottom', 'left'):
-    ax.spines[spine].set_visible(False)
-#ax.grid(b=True, which='minor', c='black', lw=0.5, ls='-')
-#ax.grid(b=True, which='major', c='black', lw=0.5, ls='-')
-
-
-plt.show()
+'''
